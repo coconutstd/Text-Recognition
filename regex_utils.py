@@ -2,7 +2,8 @@
 def compare_corp_name(match):
     #정규식이 리스트로 반환 하기 때문에 String으로 변경
     match = match[0]
-    corp_names = ['SIGMA-ALDRICH', 'DAEJUNG']
+    #print(match)
+    corp_names = ['ALDRICH','SIGMA-ALDRICH', 'DAEJUNG']
     for corp in corp_names:
         if match in corp:
             return corp
@@ -33,11 +34,12 @@ def compare_corp_name(match):
                     j +=1
                     cnt_num += 1
                 else:
-                    i += 1
+                    j += 1
                     continue
             cnt.append(cnt_num)
-    
-    if cnt[0] > cnt[1]:
-        return corp_names[0]
-    else:
+    #print(cnt)
+    #ARDRICH는 SIGMA-ARDRICH로 리턴
+    if cnt.index(max(cnt)) == 0:
         return corp_names[1]
+    
+    return corp_names[cnt.index(max(cnt))]
